@@ -1,14 +1,14 @@
-document.body.style.backgroundColor = "#CCFFFF"
+const currentValue = document.getElementById('currentValue');
 const etchASketch = document.getElementById('etchASketch')
-let range = document.getElementById('pixelRange');
+const range = document.getElementById('pixelRange');
+const pencilMode = document.getElementById('pencilMode');
+const rainbowMode = document.getElementById('rainbowMode');
+const eraserMode = document.getElementById('eraserMode');
+const clearMode = document.getElementById('clearMode');
+document.body.style.backgroundColor = "#CCFFFF";
+document.getElementById('text').style.color = '#8250C4';
 etchASketch.style.cssText = `display: grid; grid-template-columns: repeat(${range.valueAsNumber}, 1fr); width: 640px; height: 640px; background-color: white;`;
-let currentValue = document.getElementById('currentValue');
 currentValue.textContent = `${range.valueAsNumber} x ${range.valueAsNumber}`;
-
-
-let rangeChange = range.addEventListener('change', () => {
-    currentValue.textContent = `${range.valueAsNumber} x ${range.valueAsNumber}`;
-});
 
 for (i = 0; i < (range.valueAsNumber * range.valueAsNumber); i++) {
     let gridItem = document.createElement('div');
@@ -16,16 +16,13 @@ for (i = 0; i < (range.valueAsNumber * range.valueAsNumber); i++) {
     etchASketch.appendChild(gridItem);
     gridItem.style.cssText = 'border: 1px solid black';
 }
-
-
-    
-
 range.addEventListener('mouseup', gridAdd);
-
 function gridAdd(e) {
-    rangeChange;
+    range.addEventListener('change', () => {
+        currentValue.textContent = `${range.valueAsNumber} x ${range.valueAsNumber}`;
+    });
     let gridRemove = etchASketch.querySelectorAll('div');
-    for (var i = 0; i < gridRemove.length; i++) {
+    for (i = 0; i < gridRemove.length; i++) {
         gridRemove[i].remove();
     }
     etchASketch.style.cssText = `display: grid; grid-template-columns: repeat(${range.valueAsNumber}, 1fr); width: 640px; height: 640px; background-color: white;`;
@@ -36,3 +33,4 @@ function gridAdd(e) {
         gridItem.style.cssText = 'border: 1px solid black';
     }
 }
+
