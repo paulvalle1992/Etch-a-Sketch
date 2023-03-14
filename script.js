@@ -10,4 +10,11 @@ for (i = 0; i < 256; i++) {
     
 }
 
+let currentValue = document.getElementById('currentValue');
+        let range = document.getElementById('pixelRange');
+        currentValue.textContent = `${range.valueAsNumber} x ${range.valueAsNumber}`;
+        range.addEventListener('change', () => {
+            currentValue.textContent = `${range.valueAsNumber} x ${range.valueAsNumber}`;
+        })
+
 

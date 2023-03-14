@@ -11,22 +11,25 @@
 </head>
 <body>
     <div class="container d-flex flex-column align-items-center">
-        <h1 class='col mt-5 mb-3' >
-            Etch A sketch
+        <h1 class='col mt-5 mb-3 fw-bolder' >
+            Etch-A-sketch
         </h1>
         <div class="grid" id="etchASketch"> 
 
         </div>
        <br>
         <div class='col '> 
-            <button class='btn btn-primary bg' id='pencilMode'>Pencil Mode</button>
-            <button class='btn btn-primary'id='rainbowMode'>Rainbow Mode</button>
-            <button class='btn btn-primary' id='eraserMode'>Eraser</button>
-            <button class='btn btn-primary' id='clearMode'>Clear</button>
+            <button class='btn btn-primary bg p-1' id='pencilMode'>Pencil Mode</button>
+            <button class='btn btn-primary p-1'id='rainbowMode'>Rainbow Mode</button>
+            <button class='btn btn-primary p-1' id='eraserMode'>Eraser</button>
+            <button class='btn btn-primary p-1' id='clearMode'>Clear</button>
         </div>
-        <div class="col mt-3"> 
-            <label for="customRange2" class="form-label fs-4">Grid Size: </label>
-            <input type="range" class="form-range" min="10" max="64" id="customRange2">
+        <div class="col mt-3 d-flex"> 
+            <label for="pixelRange" class="form-label fs-4 p-1">Grid Size:</label>
+            <div class="fs-4 p-1" id="currentValue"></div>       
+        </div>
+        <div class="col">
+            <input type="range" class="form-range" min="10" max="64" id="pixelRange">
         </div>
     </div>
     
