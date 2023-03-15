@@ -36,13 +36,11 @@ function gridAdd(e) {
     }
 }
 
-
 etchASketch.addEventListener('mouseover', blackColorIn);
 
 
 function blackColorIn(e) {
-    if(e.buttons == 1) {
-       etchASketch.forEach(document.getElementById('gridItem').style.cssText = 'border: 1px solid black; background-color: black;');
+    if (e.buttons == 1) {
+        e.target.style.cssText = "background-color: black;";
+      }
     }
-}
-
