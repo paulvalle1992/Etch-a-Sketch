@@ -76,8 +76,7 @@ etchASketch.addEventListener('mouseover', (e) => {
         } else if (pencilMode == null && rainbowMode == null) {
             e.target.style.backgroundColor = 'white';
         } else 
-            e.target.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-            
+            e.target.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;   
         }
     })
 //CLEARMODEFUNCTION
@@ -94,3 +93,6 @@ function toggleClear() {
         }
     }
 }
+
+
+eraserMode.onClick()
