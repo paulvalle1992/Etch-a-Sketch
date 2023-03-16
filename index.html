@@ -11,18 +11,18 @@
 </head>
 <body>
     <div class="container d-flex flex-column align-items-center">
-        <h1 class='col mt-5 mb-3 fw-bolder' id="text">
-            Etch-A-sketch
+        <h1 class='col mt-3 mb-3 fw-bolder' id="text">
+            Etch-A-Sketch
         </h1>
         <div class="grid" id="etchASketch"> 
 
         </div>
        <br>
         <div class='col '> 
-            <button class='btn btn-primary bg p-1' id='pencilMode'>Pencil Mode</button>
-            <button class='btn btn-primary p-1'id='rainbowMode'>Rainbow Mode</button>
-            <button class='btn btn-primary p-1' id='eraserMode'>Eraser</button>
-            <button class='btn btn-primary p-1' id='clearMode'>Clear</button>
+            <button class='btn btn-primary bg p-1' id='pencilMode' title="use this to use pencil mode, default black color.">Pencil Mode</button>
+            <button class='btn btn-primary p-1'id='rainbowMode' title="use this to turn on rainbow mode using random colors.">Rainbow Mode</button>
+            <button class='btn btn-primary p-1' id='eraserMode' title="use this to turn on eraser and clear grid individually.">Eraser</button>
+            <button class='btn btn-primary p-1' id='clearMode' title="Use this button to toggle borders on whole grid.">Clear Border</button>
         </div>
         <div class="col mt-3 d-flex"> 
             <label for="pixelRange" class="form-label fs-4 p-1">Grid Size:</label>
@@ -31,6 +31,7 @@
         <div class="col">
             <input type="range" class="form-range" min="10" max="64" value='16' id="pixelRange">
         </div>
+        <div class="col">Changing the grid size resets the whole grid.</div>
     </div>
     
 

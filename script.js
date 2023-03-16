@@ -14,9 +14,8 @@ for (i = 0; i < (range.valueAsNumber * range.valueAsNumber); i++) {
     gridItem.setAttribute('id', 'gridItem');
     gridItem.setAttribute('class', 'gridItem');
     etchASketch.appendChild(gridItem);
-    gridItem.style.cssText = 'border: 1px solid black';
+    gridItem.style.cssText = 'border: 1px solid #400000;';
 }
-
 range.addEventListener('mouseup', gridAdd);
 function gridAdd(e) {
     range.addEventListener('change', () => {
@@ -32,15 +31,38 @@ function gridAdd(e) {
         gridItem.setAttribute('id', 'gridItem');
         gridItem.setAttribute('class', 'gridItem');
         etchASketch.appendChild(gridItem);
-        gridItem.style.cssText = 'border: 1px solid black';
+        gridItem.style.cssText = 'border: 1px solid #400000;';
     }
 }
 
-etchASketch.addEventListener('mouseover', blackColorIn);
-
-
-function blackColorIn(e) {
+const pencil = etchASketch.addEventListener('mouseover', (e) => {
     if (e.buttons == 1) {
-        e.target.style.cssText = "background-color: black;";
-      }
+        e.target.style.backgroundColor = 'black';
     }
+})
+
+const eraser = etchASketch.addEventListener('mouseover', (e) => {
+    if (e.buttons == 1) {
+        e.target.style.backgroundColor = 'white';
+    }
+})
+
+const rainbow = etchASketch.addEventListener('mouseover', (e) => {
+    if (e.buttons == 1) {
+        e.target.style.backgroundColor = 'black';
+    }
+})
+
+clearMode.addEventListener('click', toggleClear);
+function toggleClear() {
+    let borders = etchASketch.querySelectorAll('div'); 
+    let x = document.getElementById('gridItem');
+    if (x.style.border === '') {
+        for (i = 0; i < borders.length; i++)
+       borders[i].style.border = '1px solid #400000';
+    } else {
+        for (i = 0; i < borders.length; i++) {
+            borders[i].style.removeProperty('border');
+        }
+    }
+}
