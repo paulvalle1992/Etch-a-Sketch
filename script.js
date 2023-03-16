@@ -1,10 +1,9 @@
 const currentValue = document.getElementById('currentValue');
 const etchASketch = document.getElementById('etchASketch')
 const range = document.getElementById('pixelRange');
-const pencilMode = document.getElementById('pencilMode');
-const rainbowMode = document.getElementById('rainbowMode');
-const eraserMode = document.getElementById('eraserMode');
 const clearMode = document.getElementById('clearMode');
+const btnCol = document.getElementById('btnCol');
+//GRIDVALUEDISPLAY
 document.body.style.backgroundColor = "#CCFFFF";
 document.getElementById('text').style.color = '#8250C4';
 etchASketch.style.cssText = `display: grid; grid-template-columns: repeat(${range.valueAsNumber}, 1fr); width: 640px; height: 640px; background-color: white;`;
@@ -16,6 +15,7 @@ for (i = 0; i < (range.valueAsNumber * range.valueAsNumber); i++) {
     etchASketch.appendChild(gridItem);
     gridItem.style.cssText = 'border: 1px solid #400000;';
 }
+//CHANGINGGRIDVALUES
 range.addEventListener('mouseup', gridAdd);
 function gridAdd(e) {
     range.addEventListener('change', () => {
@@ -34,25 +34,63 @@ function gridAdd(e) {
         gridItem.style.cssText = 'border: 1px solid #400000;';
     }
 }
+//BUTTONFUNCTIONS
 
-const pencil = etchASketch.addEventListener('mouseover', (e) => {
+btnCol.addEventListener('click', btnCommand);
+function btnCommand(e) {
+    let pencilMode = document.getElementById('pencilMode');
+    let rainbowMode = document.getElementById('rainbowMode');
+    let eraserMode = document.getElementById('eraserMode');
+  if (e.target.classList.contains('pencil')) {
+        if (rainbowMode !== null) {
+            rainbowMode.removeAttribute('id');
+            e.target.setAttribute('id', 'pencilMode');
+        } else if (eraserMode !== null) {
+            eraserMode.removeAttribute('id');
+            e.target.setAttribute('id', 'pencilMode');
+        }
+        else if (pencilMode == null) {
+            e.target.setAttribute('id', 'pencilMode');
+        }
+  } else if (e.target.classList.contains('rainbow')) {
+        if (pencilMode !== null) {
+            pencilMode.removeAttribute('id');
+            e.target.setAttribute('id', 'rainbowMode');
+        } else if (eraserMode !== null) {
+            eraserMode.removeAttribute('id');
+            e.target.setAttribute('id', 'rainbowMode');
+        }
+        else if (rainbowMode == null) {
+            e.target.setAttribute('id', 'rainbowMode');
+        }
+  } else if (e.target.classList.contains('eraser')) {
+        if (rainbowMode !== null) {
+            rainbowMode.removeAttribute('id');
+            e.target.setAttribute('id', 'eraserMode');
+        } else if (pencilMode !== null) {
+            pencilMode.removeAttribute('id');
+            e.target.setAttribute('id', 'eraserMode');
+        }
+        else if (eraserMode == null) {
+            e.target.setAttribute('id', 'eraserMode');
+        }
+  } 
+}
+etchASketch.addEventListener('mouseover', (e) => {
+    let pencilMode = document.getElementById('pencilMode');
+    let rainbowMode = document.getElementById('rainbowMode');
+    let eraserMode = document.getElementById('eraserMode');
     if (e.buttons == 1) {
-        e.target.style.backgroundColor = 'black';
-    }
-})
-
-const eraser = etchASketch.addEventListener('mouseover', (e) => {
-    if (e.buttons == 1) {
-        e.target.style.backgroundColor = 'white';
-    }
-})
-
-const rainbow = etchASketch.addEventListener('mouseover', (e) => {
-    if (e.buttons == 1) {
-        e.target.style.backgroundColor = 'black';
-    }
-})
-
+        if (rainbowMode == null && eraserMode == null) {
+             e.target.style.backgroundColor = 'black';
+        } else if (pencilMode == null && rainbowMode == null) {
+            e.target.style.backgroundColor = 'white';
+        } else 
+            e.target.style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+            
+        }
+    })
+//CLEARMODEFUNCTION
 clearMode.addEventListener('click', toggleClear);
 function toggleClear() {
     let borders = etchASketch.querySelectorAll('div'); 
