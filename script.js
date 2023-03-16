@@ -42,36 +42,26 @@ function btnCommand(e) {
     let rainbowMode = document.getElementById('rainbowMode');
     let eraserMode = document.getElementById('eraserMode');
   if (e.target.classList.contains('pencil')) {
+        e.target.setAttribute('id', 'pencilMode');
         if (rainbowMode !== null) {
             rainbowMode.removeAttribute('id');
-            e.target.setAttribute('id', 'pencilMode');
         } else if (eraserMode !== null) {
             eraserMode.removeAttribute('id');
-            e.target.setAttribute('id', 'pencilMode');
-        }
-        else if (pencilMode == null) {
-            e.target.setAttribute('id', 'pencilMode');
         }
   } else if (e.target.classList.contains('rainbow')) {
+    e.target.setAttribute('id', 'rainbowMode');
         if (pencilMode !== null) {
-            pencilMode.removeAttribute('id');
-            e.target.setAttribute('id', 'rainbowMode');
+            pencilMode.removeAttribute('id');   
         } else if (eraserMode !== null) {
             eraserMode.removeAttribute('id');
-            e.target.setAttribute('id', 'rainbowMode');
-        }
-        else if (rainbowMode == null) {
-            e.target.setAttribute('id', 'rainbowMode');
         }
   } else if (e.target.classList.contains('eraser')) {
+        e.target.setAttribute('id', 'eraserMode');
         if (rainbowMode !== null) {
             rainbowMode.removeAttribute('id');
-            e.target.setAttribute('id', 'eraserMode');
+            
         } else if (pencilMode !== null) {
             pencilMode.removeAttribute('id');
-            e.target.setAttribute('id', 'eraserMode');
-        }
-        else if (eraserMode == null) {
             e.target.setAttribute('id', 'eraserMode');
         }
   } 
